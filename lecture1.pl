@@ -51,9 +51,21 @@ print "this is the final message, goodbye!";
 #Scalar variables only have one value associate with them (unlike vectors in linear algebra)
 #scalar variables are all prefixed with the "$" symbol
 #there are two types of scalars in perl: numbers and strings (text)
-$myAge =38;
+#example of a numerical variable
+$myAge = 38;
+#note '=' is the assignment operator that stores the value on the Right Hand Side (RHS) in the 
+#	variable listed on the Left Hand Side (LHS)
+
 #we can display variables by embedding them inside quoted text strings following the print statement
 print "my age is $myAge \n";
+#declare a varaiable to store a letter, in this case "A" is stored in the varable called "letter"
+$letter = 'A';
+#example of a variable that stores a string
+$text = "this is a string of text";
+#example of printing multiple variables at the same time
+print "letter: $letter, text: $text, myAge:  $myAge\n";
+
+
 
 
 
