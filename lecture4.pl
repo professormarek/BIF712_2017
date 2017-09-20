@@ -95,8 +95,116 @@ while($i < 10){
 	#while statement and check the condition AGAIN
 }
 
+#the do-while loop is similar to the while loop, except it tests the condition at the END
+#rather than BEFORE entering the statements within the {} for the first time
+#therefore, it will execute the statements within {} at least ONCE
+$i =0; #try this with $i=10 or 100 
+print "entering the do-while loop\n";
+do{
+	print "i is now: $i\n";
+	$i++;
+} while($i < 10);
+
+#you might notice that loops have certain features in common.
+# A) there is a varaible used in the condition, and it is initialized before we reach the loop
+# B) there is a condition that is checked to decide whether to repeat the statements inside the {}
+# C) there are statements executed inside the loop (useful stuff)
+# D) there is a statement that updates the variable used in parts A and B such that the condition
+# eventually becomes FALSE
+$i =0; #A
+while($i < 10){ #B
+	print "(while loop)i is now: $i\n";#C
+	$i++;#D
+}
+
+#the "for" loop also repeats statements within the {}
+#however, it uses a concise "cookie cutter" approach that reminds the programmer of parts A-D
+#and makes it less likely that we'll accidentally introduce errors such as an infinte loop
+#the syntax is like this:
+#for(A ; B ; D){
+#	C
+#}
+#initialization (A) happens the first time we reach the for statement
+#note that in the for loop the condition is checked before entering the body (C) for the first time
+#the update (D) happens after the } is reached, but before the condition is checked again
+
+#on the flip side, the while loop lets the programmer be more creative - reorder or completely omit
+#parts of the loop if we're using while (do-while)
+
+print "entering a for loop (eqivalent to the while loop just before):\n";
+for($i=0 ; $i<10; $i++){
+	print "(for loop) i is $i\n";
+}
+
+#the "until" loop repeats a group of statements until a given condition becomes TRUE
+#note, that like the while loop, it checks the condition before executing the statements inside {}
+
+$i = 0;
+print "entring until loop\n";
+
+until($i >= 10){
+	print "(until loop) i is $i\n";
+	$i++;
+}
+
+#there's also the do-until loop that executes the statements within {} at least once
+#much like the do-while loop (left as an exercise to the reader)
+
+#STYLE MATTERS: whenever you write code within {} curly braces, indent all those lines until the
+#closing curly brace } 
+
+
+#changing gears a bit.. 
+#perl has built in subroutines for generating "pseudo-random numbers"
+#random numbers are useful for so-called Monte Carlo simulations or analysis.
+#... for now though let's use them for a guessing game
+
+#the rand() funciton or subroutine by default generates a number (fraction) between 0 and 1
+# however an argument can be supplied to return a decimal between 0 and that number
+#examples:
+my $randomNum = rand(); #note: uniform distribution between 0 and 1
+print "my random number is: $randomNum\n";
+#let's see a number between 0 and 100
+my $limit = 100;
+$randomNum = rand($limit);
+print "my random number (0-100) is: $randomNum\n";
+#to drop off (truncate) any decimal places we can use the int() function or subroutine
+$randomNum = int($randomNum);
+print "my random number truncated (0-100) is: $randomNum\n";
+
+#A perl guessing game
+$range = 10;
+#choose a number for the player to guess
+my $targetNumber = int(rand($range);
+my $countOfGuesses = 0;
+my $maximumGuesses = 3;
+my $userGuess;
+print "*************************\n";
+print "*WELCOME TO GUESSNG GAME*\n";
+print "*************************\n";
+
+do{
+	print "Enter a number between 0 and $range\n";
+	chomp($userGuess = <STDIN>);
+	$countOfGuesses++;
+	if($userGuess == $targetNumber){
+		print "Hooray! YOU WON!!!!!!!\n";
+	}else{
+		print "Good guess, try again!"
+	}
+	#exercise: tell the user how many guesses the have left
+
+}while($countOfGuesses < $maximumGuesses && $userGuess != $targetNumber)
+if($countOfGuesses >= $maximumGuesses){
+	print "sorry! you ran out of guesses, play again!"
+}
+
+
+
+
 #exercise1: count down from 10 to 0 (using a loop)
-#exercise2: prompt and accept a number from the user count up from 1 to the number the user entered
+#exercise2: prompt and accept a number from the user
+# count up from 1 to the number the user entered
 
 
 
