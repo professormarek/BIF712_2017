@@ -173,9 +173,9 @@ $randomNum = int($randomNum);
 print "my random number truncated (0-100) is: $randomNum\n";
 
 #A perl guessing game
-$range = 10;
+my $range = 10;
 #choose a number for the player to guess
-my $targetNumber = int(rand($range);
+my $targetNumber = int(rand($range));
 my $countOfGuesses = 0;
 my $maximumGuesses = 3;
 my $userGuess;
@@ -190,13 +190,17 @@ do{
 	if($userGuess == $targetNumber){
 		print "Hooray! YOU WON!!!!!!!\n";
 	}else{
-		print "Good guess, try again!"
+		print "Your guess wasn't correct!\n";
+		if($countOfGuesses < $maximumGuesses){
+			print "Guess again!\n";
+		}
 	}
 	#exercise: tell the user how many guesses the have left
 
-}while($countOfGuesses < $maximumGuesses && $userGuess != $targetNumber)
-if($countOfGuesses >= $maximumGuesses){
-	print "sorry! you ran out of guesses, play again!"
+}while($countOfGuesses < $maximumGuesses && $userGuess != $targetNumber);
+
+if($userGuess != $targetNumber){
+	print "sorry! you ran out of guesses, play again!\n";
 }
 
 
