@@ -76,7 +76,52 @@ print "our new data array after pushing 452: @data\n";
 
 #we can empty out an array with the following syntax:
 @data = ();
-print "our emptied out data array: @data\n"
+print "our emptied out data array: @data\n";
+
+#easy way to reverse the contents of an array 
+# reverse (@array);
+#the above command returns a reversed array - doesn't alter the array
+#try assigning the reversed array to itself before printing
+
+my @reversed = reverse(@lowercaseLetters);
+print ("reversed lowercaseLetters: @lowercaseLetters \n");
+#alternatively, if you want @lowercaseLetters to be permanently changed
+#you can re-assign it to itself
+
+#sorting
+#perl has built in sorting by using the "sort" keyword
+#it sorts the array "lexically" or alphabetically
+#much like the reverse keyword, it doesn't alter the original array
+#instead it returns a sorted array which we can then assign
+my @months = ("january", "april", "may", "june", "october");
+my @sortedMonths = sort(@months);
+
+print "original: @months \nsorted: @sortedMonths\n";
+
+#notice that numerical lists will also be sorted alphabetically by default :-(
+#to force perl to sort a numerical list numerically
+my @unsortedNumbers = (7, 99, 3, 1, 2001, 101);
+my @sortedNumbers = sort {$a <=> $b} @unsortedNumbers;
+print "original: @unsortedNumbers \nsorted numerically: @sortedNumbers\n";
+
+#we can access more than one element of an array at one time
+#by using so-called LIST SLICES
+#slices are created by specifying a comma separated list of values
+#enclosed in [] square brackets
+#for example to display slices of the months array
+print "first third and fifth elements of @months[0,2,4]\n";
+#we can also use the range operator with SLICES
+print "slices of lowercaseLetters @lowercaseLetters[10..16]\n";
+
+
+
+
+
+
+
+
+
+
 
 
 
