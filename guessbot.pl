@@ -1,3 +1,8 @@
+#!/usr/bin/perl
+#the line above tells the operating system where to find a program to interpret (execute) this script
+
+
+
 
 #change this into a guessing game
 #make the number to guess between 1-10000 (choose once)
