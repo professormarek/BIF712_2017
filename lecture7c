@@ -1,0 +1,134 @@
+# BIF712 Lecture #6
+# Thursday October 13, 2016
+
+# To check version of Perl installed on your system: Perl -v
+# This semester (Fall 2016) we will be using Perl version 5.24.0
+
+use strict;
+use warnings;
+
+# Displaying formatted output with printf(...):
+# To display a 10 column field which includes data:
+
+my $i;
+for($i=1; $i<1000; $i+=60) {
+   printf("%10d\n", $i);
+}
+
+# Perl subroutines (user-defined functions):
+# Perl provides for user-defined functions, (more correctly referred to
+# as subroutines in Perl).
+# Subroutines may be located anywhere in the main program, or loaded in
+# from other source files using the do, require, or use keywords.
+# The Perl model for function calls and return values is simple:
+#    All parameters passed into a function or subroutine are stored as one
+#    single flat list of scalars, and all functions likewise return to
+#    their caller one single flat list of scalars.
+
+# Arrays or hashes sent as parameters (or returned) to Perl subroutines are
+# collapsed thereby losing their identities.
+# Subroutines many accept as many or as few scalar elements as required.
+# Any arguments passed into a subroutine are stored in the Perl default array @_.
+# The array @_ is a local array, but its elements are aliases for the
+# actual scalar parameters. In particular, if an element $_[0] is updated,
+# the corresponding argument is updated.
+# A return statement may be used to exit a subroutine, optionally specifying
+# the returned value, which will be evaluated in the appropriate context
+# (list, scalar, or void) depending on the context of the subroutine call.
+# If no return value is specified, then the subroutine returns an empty list in
+# list context, the undefined value in scalar context, or nothing in void context.
+# If you return one or more aggregates (arrays and hashes), then these will be
+# flattened together into one large indistinguishable list.
+# If no return is found and if the last statement is an expression, its value
+# is returned.
+
+# Differences between Perl functions and Perl subroutines:
+# In Perl, a "function" typically stands for one of Perl's
+# built-in functions whereas a subroutine is a user-defined
+# block of code which performs a specific task.
+# (eg.) Perl function = chomp( ), pop( ), shift( ), etc.
+#       Perl subroutine = convert_to_int( ), is_valid( ), etc.
+
+# To define a subroutine, you must use the keyword: sub
+# with opening and closing braces.
+# (eg.) sub isAlpha {
+#          your code here;
+#       }
+
+sub isAlpha($); # forward declaration (prototype) specifying that
+		# only a single scalar argument is supplied.
+
+print isAlpha("abcdefghijklmnopqrstuvwxyz"), "\n";
+print isAlpha("Hello World"), "\n";
+print isAlpha("OnlyAlphabeticCharacters9ArePermitted"), "\n\n";
+
+# this perl subroutine (user-defined) returns true only when all the
+# characters in the string it accepts as a parameter are alphabetic!
+sub isAlpha($) {
+   my $s = shift(@_);
+   my ($i, $rc); # assume string contains alphabetic characters!
+   for($i=0, $rc=1; $i<length($s) && $rc == 1; $i++) {
+      if(substr($s, $i, 1) lt 'A' || substr($s, $i, 1) gt 'z' ||
+	 substr($s, $i, 1) gt 'Z' && substr($s, $i, 1) lt 'a') {
+	 $rc = 0;
+      }
+   }
+   return $rc;
+}
+
+
+# Function Prototypes:
+# Function prototypes or forward declarations are not required as long
+# as subroutines are called using the sub yourFunction( ) including brackets.
+# The "( )" tell Perl to look for a subroutine named yourFunction anywehere
+# in the program.
+# For the function above, a forward declaration would look like:
+# sub isAlpha;
+# To specify that a subroutine will accept an exact number of arguments,
+# you must prototype it with a $ for each argument it accepts.
+# (eg.) sub isAlpha($);
+# Once prototyped this way however, the subroutine can only accept 1
+# argument only and must be defined exactly as it was prototyped.
+# Without specifiying a prototype, a subroutine may accept any number
+# of arguments.
+
+
+# Return Values:
+# Subroutines can also return values as seen in the example above.
+# Return values can be implicit by just writing the statement or
+# variable that you wish to return on the subroutine's LAST line,
+# OR, can be explicitly declared by using the "return" keyword.
+
+# Unlike C or other languages however, subroutines can return entire
+# lists and not just simple scalar values.
+#
+# Subroutine Parameters:
+# Arguments passed to a subroutine are available in the special
+# Perl variable '@_'.
+# To retrieve one or more of the arguments, the Perl built-in
+# shift operator/function is used.
+#
+# see example below:
+sub sumOfSquares($$); # prototype that accepts exactly 2 scalar arguments
+
+sub sumOfSquares($$) {
+   my $arg1 = shift; # the default perl array @_ is assumed!
+   my $arg2 = shift;
+   return ($arg1**2 + $arg2**2);
+}
+
+print "sum of the squares 5 and 7 is: ", sumOfSquares(5,7), "\n";
+print "sum of the squares 3 and 4 is: ", sumOfSquares(3,4), "\n\n";
+
+
+# Parameters to subroutines may also conatin arrays and hashes.
+# see example below:
+
+sub foo1;
+my @abc = (0..9);
+foo1(-3, @abc, 88, 21);
+
+print "abc list is: @abc\n";
+sub foo1 {
+   print "The \@_ list in the sub routine is: @_\n";
+}
