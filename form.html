@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+   <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+   <title>the html form picker</title>
+
+<!-- form path: /home/studentID/public_html/perl/chooser.html -->
+<!-- cgi path:  /home/studentID/public_html/cgi-bin/chooser.cgi -->
+<style type="text/css">
+ .ref0 { font-family: Georgia, monospace; font-size: 14pt }
+ .ref1 { font-family: Georgia, monospace; font-size: 18pt; color: #0000ff }
+ .ref2 { font-family: Georgia, monospace; font-size: 12pt; color: #ff0000 }
+ .ref3 { font-family: Georgia, monospace; font-size: 10pt }
+ body { background-color: #EAEAEA }
+</style>
+</head>
+<body>
+<h1>The HTML Form Picker</h1>
+<p><h2>Welcome to the &lt;HTML&gt; form Picker!</h2>
+<h3>Please input the text, colors, fonts, and styles from the choices below.</h3>
+</p>
+
+<p><h3>Use the <input type="submit" value="go">  button to process your results.</h3></p>
+
+<p>
+<form method="post" action="cgi-bin/processForm.pl">
+First name: <input type="text" name="fname">
+<br />
+Last name: <input type="text" name="lname">
+<br />
+Password:  <input type="password" name="passwd">
+</p>
+
+<p>Please select a background colour from the list below:
+<select name="bgcolor">
+<option value="#ffffff" selected="selected">white</option>
+<option value="#000000">black</option>
+<option value="#c0c0c0">grey</option>
+<option value="#ff0000">red</option>
+<option value="#00ff00">green</option>
+<option value="#0000ff">blue</option>
+</select>
+</p>
+
+<p>
+Please select the font from the list below:
+<select name="font">
+<option value="arial" selected="selected">arial</option>
+<option value="courier">courier</option>
+<option value="helvetica">helvetica</option>
+</select>
+</p>
+
+<p>
+Please select the text style:
+<input type="radio" name="ttype" value="p" checked="checked" />plain
+<input type="radio" name="ttype" value="b" />bold
+<input type="radio" name="ttype" value="i" />italic
+</p>
+
+<p>
+Please select the text size:
+<input type="radio" name="size" value="3" checked="checked" />3
+<input type="radio" name="size" value="4" />4
+<input type="radio" name="size" value="5" />5
+<input type="radio" name="size" value="6" />6
+<input type="radio" name="size" value="7" />7
+<input type="radio" name="size" value="8" />8
+</p>
+
+<p>
+Check the courses you are enrolled in this semester...
+<input type="checkbox" name="courses" value="bif712" />BIF712
+<input type="checkbox" name="courses" value="bif713" />BIF713
+<input type="checkbox" name="courses" value="bif701" />BIF701
+<input type="checkbox" name="courses" value="bif804" />BIF804
+<input type="checkbox" name="courses" value="bif805" />BIF805
+</p>
+
+<p>
+Please enter some text:
+<textarea name="text" rows="5" cols="60"></textarea>
+<input type="submit" value="go" />
+<input type="reset" value="clear form" /></p>
+</form>
+<p>
+<a href="http://validator.w3.org/">
+<img src="http://www.w3.org/Icons/valid-xhtml10" alt="Valid XHTML 1.0 Strict" height="31" width="88" /></a>
+</p>
+</body></html>
